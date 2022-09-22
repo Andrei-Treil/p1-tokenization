@@ -26,6 +26,7 @@ with open('tokenization-input-part-A.txt') as f:
         line = line.lower()
 
         #identify acronyms and remove apostrophes
+        #ASK: can acronyms be single alphanumeric? eg. A. or 1.
         cleaned = re.sub(r'\S+\.\S\.(?=.)',de_acronym,line.replace("'",""))
 
         #remove all punctuation
@@ -75,15 +76,17 @@ stem_list = []
 
 #helper function to carry out step 1b after 1a is applied to a word
 def porter_1b(str):
-    stem_eedly = re.sub(r'eedly',"ee",str)
+    stem_eedly = re.sub(r'(\A[aeiou]{1,}[^aeiou][a-z]ee)dly',r'\1',str)
+    stem_ingly = re.sub(r'([aeiou][a-zA-Z]*)ingly',r'\1',str)
     if stem_1b != str:
         return stem_1b
 
 
 for word in no_stop:
     stem_sses = re.sub(r'sses',"ss",word)
-    stem_i = re.sub(r'[a-zA-Z]{2,}ies|[a-zA-Z]{2,}ied',"i",word)
-    stem_ie = re.sub(r'[a-zA-Z]ies|[a-zA-Z]ied',"ie",word)
+    stem_s = re.sub(r'([aeiou][a-zA-z]*)(?<![aeiou])s',r'\1',word)
+    stem_i = re.sub(r'(?<=[a-zA-Z][a-zA-z])ies|(?<=[a-zA-Z][a-zA-Z])ied',"i",word)
+    stem_ie = re.sub(r'ies|ied',"ie",word)
 
     if stem_sses != word:
         stem_list.append(porter_1b(stem_sses))
