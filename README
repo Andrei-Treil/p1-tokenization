@@ -1,0 +1,42 @@
+AB BREAKDOWN:
+---------------------------
+Code for parts A and B in tokenizer.py same code is used for most of parts A and B.
+Different textfiles are used depending on if executing part A or B.
+Creating outputs for differing parts handeled with if statements at end of main function.
+
+DECRIPTION:
+---------------------------
+System reads the desired txt file line by line. While doing this tokenization is executed.
+For each line, the tokenizer handles the required cases using regex to identify, and then tokenizes the cleaned text.
+System then reads the stopwords.txt file and places them in a dictionary.
+This is so the system can iterate through the tokenized text and lookup if a word is a stopword.
+After stopword removal,iterate the list of tokens w/out stopwords and apply steps from 1a by using regex.
+Once the longest 1a rule can be applied for a word, this word is sent to a 1b function.
+Using a similar method to 1a, apply longest 1b rule and return resulting string to 1a.
+This resulting string is appended to a final list, which is used for creating output.
+
+LIBRARIES:
+---------------------------
+re - for using regex to apply tokenizing and stemming rules
+sys - to allow user to specify wether vocab_growth graph should be made
+counter - to create top 300 words for Part B output
+defaultdict - to create graph
+matplotlib.pyplot - used to create graph, https://umass.moonami.com/mod/forum/discuss.php?d=183095 says its allowed
+
+DEPENDENCIES:
+---------------------------
+Written in Python 3.9.13 
+matplotlib version >= 3.4.3
+    - pip install matplotlib OR conda install matplotlib
+    - https://matplotlib.org/stable/index.html 
+
+BUILDING:
+---------------------------
+Download and unzip the folder. If tokenization-input-part-A.txt, tokenization-input-part-B.txt, or stopwords.txt are missing, add them to same directory as tokenizer.py
+Make sure python is downloaded, and that matplotlib is installed
+
+RUNNING:
+---------------------------
+CD into the same directory as tokenizer.py
+You can run the script by entering "python tokenizer.py" into your terminal
+To execute the creation of the graph, enter "python tokenizer.py graph" into the terminal
