@@ -21,7 +21,7 @@ re - for using regex to apply tokenizing and stemming rules
 sys - to allow user to specify wether vocab_growth graph should be made
 counter - to create top 300 words for Part B output
 defaultdict - to create graph
-matplotlib.pyplot - used to create graph, https://umass.moonami.com/mod/forum/discuss.php?d=183095 says its allowed
+matplotlib.pyplot - used to create graph
 
 DEPENDENCIES:
 ---------------------------
